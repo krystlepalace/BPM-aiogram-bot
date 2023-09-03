@@ -1,5 +1,6 @@
 import librosa
 
+
 async def detect(filepath: str):
     y, sr = librosa.load(filepath, sr=None)
     bpm = 0
