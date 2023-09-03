@@ -5,6 +5,6 @@ async def detect(filepath: str):
     y, sr = librosa.load(filepath, sr=None)
     bpm = 0
     if y.size != 0:
-        bpm = librosa.beat.tempo(y=y, sr=sr)
+        bpm = librosa.beat.tempo(y=y, sr=sr) # librosa.feature.rhythm.tempo  in future
 
     return bpm
