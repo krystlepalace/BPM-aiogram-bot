@@ -5,6 +5,7 @@ from pydantic import SecretStr
 
 class Settings(BaseSettings):
     bot_token: SecretStr
+    media_full_path: Optional[str]
 
     class Config:
         env_file = "./.env"
