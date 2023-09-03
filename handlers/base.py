@@ -13,5 +13,5 @@ async def start_command(message: Message):
 
 @router.message(Command("help"))
 async def help_command(message: Message):
-    await message.answer("Use this  bot if you need to know BPM of some track quicly and without using specific software or sites.\nJust send audio to the bot and it will detect BPM and send for you.")
+    await message.answer("Use this  bot if you need to know BPM of some track without using specific software or sites.\nJust send audio to the bot and it will detect BPM and send for you.")
 
