@@ -7,7 +7,7 @@ router = Router()
 
 
 @router.message(Command("start"))
-async def start_command(message: Message)
+async def start_command(message: Message):
     await message.answer("Hello there!\nThis bot can detect BPM from your audio, just send it and results will appear soon!\nFor more help use /help")
 
 
