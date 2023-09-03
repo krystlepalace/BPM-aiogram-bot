@@ -3,6 +3,7 @@ from aiogram.types import Message
 from pathlib import Path
 from utils.detect_bpm import detect
 import main
+from config import CONFIG
 
 
 router = Router()
@@ -14,7 +15,7 @@ async def detect_bpm_reply(message: Message):
 
     file = await main.bot.get_file(file_id)
     file_path = file.file_path
-    file_on_disk = Path(f"../meida/{file_id}.mp3")
+    file_on_disk = Path(f"{CONFIG.media_full_path}{file_id}.mp3")
     
     await main.bot.download_file(file_path, destination=file_on_disk)
 
