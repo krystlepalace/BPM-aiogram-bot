@@ -1,7 +1,7 @@
 from aiogram import Router, F
 from aiogram.types import Message
 from pathlib import Path
-from utils.detecter import detect_bpm
+from utils.detecter import detect_bpm, detect_key
 import main
 from config import CONFIG
 import os
@@ -22,7 +22,8 @@ async def detect_bpm_reply(message: Message):
     await main.bot.download_file(file_path, destination=file_on_disk)
 
     bpm = await detect_bpm(file_on_disk.__str__())
+    key = await detect_key(file_on_disk.__str__())
     os.remove(file_on_disk)
 
-    await message.reply(f"Song: {message.audio.title}\nBPM: {round(bpm[-1], 3)}\n\nBy @bpm_detect_bot")
+    await message.reply(f"Song: {message.audio.title}\nBPM: {round(bpm[-1], 3)}\nKey: {key}\n\nBy @bpm_detect_bot")
 
