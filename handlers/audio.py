@@ -12,6 +12,7 @@ router = Router()
 
 @router.message(F.audio)
 async def detect_bpm_reply(message: Message):
+    await message.reply("Wait a minute...")
     file_id = message.audio.file_id
 
     file = await main.bot.get_file(file_id)
@@ -23,5 +24,5 @@ async def detect_bpm_reply(message: Message):
     bpm = await detect(file_on_disk.__str__())
     os.remove(file_on_disk)
 
-    await message.reply(f"Song: {message.audio.title}\nBPM: {round(bpm[-1], 3)}")
+    await message.reply(f"Song: {message.audio.title}\nBPM: {round(bpm[-1], 3)}\n\nBy @bpm_detect_bot")
 
