@@ -2,7 +2,7 @@
  Telegram bot created with aiogram that can detect BPM from audiofile sent from user
 
  [<img src="https://img.shields.io/badge/Telegram-%40bpm__detect__bot-blue">](https://t.me/bpm_detect_bot)
- ![Aiogram](https://img.shields.io/badge/aiogram-14354C?style=for-the-badge&logo=python&logoColor=white)
+ [![Aiogram](https://img.shields.io/badge/aiogram-14354C?style=for-the-badge&logo=python&logoColor=white)]
 
  # Contents
  1. <a href="#install">Install</a>
