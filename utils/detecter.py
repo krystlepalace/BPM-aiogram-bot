@@ -5,6 +5,7 @@ from config import CONFIG
 
 # TODO: make singleton class for opening files with librosa.load
 # add method reset() to set instance to None
+#  save file name in class variables
 keys = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#',  'G', 'G#','A', 'A#', 'B']
 
 async def detect_bpm(filepath: str):
@@ -29,6 +30,6 @@ async def detect_key(filepath: str):
     chroma = librosa.feature.chroma_cqt(y=y, sr=sr)
     chroma_vals = np.sum(chroma, axis=1)
     most_common_pc = np.argmax(chroma_vals)
-    key = keys[most_common_pc-5]
+    key = keys[most_common_pc-7]
 
     return key
