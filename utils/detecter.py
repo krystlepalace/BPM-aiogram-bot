@@ -17,5 +17,10 @@ async def detect_bpm(filepath: str):
 async def detect_key(filepath: str):
     y, sr = librosa.load(filepath, sr=None)
     key = None
+
     chroma = librosa.feature.chroma_cqt(y=y, sr=sr)
-     np.sum(chroma, axis=1)
+    chroma_vals = np.sum(chroma, axis=1)
+    most_common_pc = np.argmax(chroma_vals)
+    key = keys[most_common_pc]
+
+    return key
