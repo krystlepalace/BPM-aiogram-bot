@@ -74,6 +74,9 @@ docs/_build/
 # idea config
 .idea/
 
+# media folder
+media/
+
 # PyBuilder
 .pybuilder/
 target/
