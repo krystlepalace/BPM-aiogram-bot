@@ -24,12 +24,17 @@ Clone the repository and install all dependencies by:
 ```bash
 pip install -r requirements.txt
 ```
-Fill .env variables and start bot by:
+Download ffmpeg or make sure you have it in PATH and fill .env variables.
+If you are on Windows, insert full ffmpeg.exe path to .env variable. If you are on linux - just type 'ffmpeg'.
+
+Fill other .env variables and start bot by:
 ```bash
 python main.py
 ```
 
+### Systemd
+Work-in-progress
 
  ## TODO
- 1. Add key detection feature
-
+1. User friendly interfice with inline buttons for redacting id3 tags
+2. Systemd .service file 
