@@ -46,7 +46,7 @@ async def process_result(message: Message, data: Dict[str, Any]):
 
     await main.bot.send_audio(chat_id=message.from_user.id,
                               audio=FSInputFile(song_on_disk.__str__()))
-
+    await state.clear()
     os.remove(song_on_disk)
     os.remove(cover_on_disk)
 
