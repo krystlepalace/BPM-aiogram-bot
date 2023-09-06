@@ -12,8 +12,8 @@ async def main():
     dp = Dispatcher()
 
     dp.include_routers(base.router,
+                       tags.router,
                        audio.router,
-                       tags.router
                        )
 
     await set_commands(bot)
