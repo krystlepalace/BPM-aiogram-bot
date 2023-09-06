@@ -7,6 +7,7 @@ class TagsEditor:
 
         if not self.file.tag:
             self.file.initTag()
+            self.file.tag.artist = "Unknown"
             self.file.tag.title = song_name
 
     async def change_cover(self, image):
