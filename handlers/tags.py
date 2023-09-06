@@ -14,6 +14,7 @@ router = Router()
 
 
 class ChangeCoverForm(StatesGroup):
+    song_name = State()
     song = State()
     cover_image = State()
 
@@ -40,7 +41,7 @@ async def process_result(message: Message, data: Dict[str, Any]):
         f"{CONFIG.media_full_path}{cover_file_id}.{file_path.split('.')[-1]}")
     await main.bot.download_file(file_path, destination=cover_on_disk)
 
-    editor = TagsEditor(song_on_disk.__str__())
+    editor = TagsEditor(song_on_disk.__str__(), data.get("song_name"))
     await editor.change_cover(cover_on_disk.__str__())
 
     await main.bot.send_audio(chat_id=message.from_user.id,
@@ -53,6 +54,7 @@ async def process_result(message: Message, data: Dict[str, Any]):
 @router.message(ChangeCoverForm.song)
 async def process_get_song(message: Message, state: FSMContext):
     await state.update_data(song=message.audio.file_id)
+    await state.update_data(song_name=message.audio.file_name)
     await state.set_state(ChangeCoverForm.cover_image)
     await message.reply("Great! Now send picture.")
 
