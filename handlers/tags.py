@@ -32,7 +32,7 @@ async def process_result(message: Message, data: Dict[str, Any]):
     file = await main.bot.get_file(song_file_id)
     file_path = file.file_path
     song_on_disk = Path(
-        f"{CONFIG.media_full_path}{song_file_id}.{file_path.split('.')[-1]}")
+        f"{CONFIG.media_full_path}{data.get('song_name')}")
     await main.bot.download_file(file_path, destination=song_on_disk)
 
     file = await main.bot.get_file(cover_file_id)
