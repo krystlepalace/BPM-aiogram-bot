@@ -37,5 +37,4 @@ python main.py
 Work-in-progress
 
  ## TODO
-1. User friendly interfice with inline buttons for redacting id3 tags
-2. Systemd .service file 
+1. Systemd service 
