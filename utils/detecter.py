@@ -10,9 +10,10 @@ class Detecter:
         self.orig_path = filepath
         self.converted_path = f"{filepath.split('.')[0]}.mp3"
 
-        subprocess.run(
-            [CONFIG.ffmpeg_path, "-i", self.orig_path, "-vn", "-ar", "44100", "-ac",
-             "2", "-b:a", "192k", self.converted_path])
+        if not filepath.endswith(".mp3"):
+            subprocess.run(
+                [CONFIG.ffmpeg_path, "-i", self.orig_path, "-vn", "-ar", "44100", "-ac",
+                "2", "-b:a", "192k", self.converted_path])
 
         self.loaded_audio = librosa.load(self.converted_path, sr=None)
 
