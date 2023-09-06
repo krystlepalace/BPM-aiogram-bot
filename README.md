@@ -37,4 +37,5 @@ python main.py
 Work-in-progress
 
  ## TODO
-1. Systemd service 
+1. Systemd service
+2. Funcionality for changing telegram thumbnail of an audiofile
