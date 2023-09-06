@@ -12,6 +12,7 @@ async def main():
     dp = Dispatcher()
 
     dp.include_routers(base.router,
+                       audio.router,
                        tags.router
                        )
 
