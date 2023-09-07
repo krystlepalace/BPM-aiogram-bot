@@ -47,7 +47,8 @@ async def process_result(message: Message, data: Dict[str, Any]):
     await editor.change_cover(cover_on_disk.__str__())
 
     await main.bot.send_audio(chat_id=message.from_user.id,
-                              audio=FSInputFile(song_on_disk.__str__()))
+                              audio=FSInputFile(song_on_disk.__str__()),
+                              thumbnail=FSInputFile(song_on_disk.__str__()))
 
     os.remove(song_on_disk)
     os.remove(cover_on_disk)
