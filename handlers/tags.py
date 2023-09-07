@@ -22,7 +22,9 @@ class ChangeCoverForm(StatesGroup):
 @router.message(Command("change_cover"))
 async def start_change_cover(message: Message, state: FSMContext):
     await state.set_state(ChangeCoverForm.song)
-    await message.reply(text="Hi! You want to check cover image of some song? Send it to me, and then send image, and I will make it!")
+    await message.reply(text="Hi! You want to check cover image of some song? "
+                             "Send it to me, and then send image, and I will "
+                             "make it!")
 
 
 async def process_result(message: Message, data: Dict[str, Any]):
@@ -45,7 +47,8 @@ async def process_result(message: Message, data: Dict[str, Any]):
     await editor.change_cover(cover_on_disk.__str__())
 
     await main.bot.send_audio(chat_id=message.from_user.id,
-                              audio=FSInputFile(song_on_disk.__str__()))
+                              audio=FSInputFile(song_on_disk.__str__()),
+                              thumbnail=FSInputFile(song_on_disk.__str__()))
 
     os.remove(song_on_disk)
     os.remove(cover_on_disk)
@@ -53,6 +56,9 @@ async def process_result(message: Message, data: Dict[str, Any]):
 
 @router.message(ChangeCoverForm.song)
 async def process_get_song(message: Message, state: FSMContext):
+    if message.audio is None:
+        await state.clear()
+        return
     await state.update_data(song=message.audio.file_id)
     await state.update_data(song_name=message.audio.file_name)
     await state.set_state(ChangeCoverForm.cover_image)
@@ -61,6 +67,9 @@ async def process_get_song(message: Message, state: FSMContext):
 
 @router.message(ChangeCoverForm.cover_image)
 async def process_get_image(message: Message, state: FSMContext):
+    if message.photo is None:
+        await state.clear()
+        return
     data = await state.update_data(cover_image=message.photo[-1].file_id)
     await message.reply("Working on your request! Wait a minute...")
 
