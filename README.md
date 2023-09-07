@@ -34,7 +34,11 @@ python main.py
 ```
 
 ### Systemd
-Work-in-progress
+Replace '.example' from bpm-aiogram-bot.serivce.example so it's just bpm-aiogram-bot.serivce.
+Then just copy service file to /etc/systemd/system/
+```bash
+sudo systemctl start bpm-aiogram-bot.serivce
+```
 
  ## TODO
-1. Systemd service
+Fix bugs with FSM
