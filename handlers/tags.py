@@ -67,6 +67,9 @@ async def process_get_song(message: Message, state: FSMContext):
 
 @router.message(ChangeCoverForm.cover_image)
 async def process_get_image(message: Message, state: FSMContext):
+    if message.photo is None:
+        await state.clear()
+        return
     data = await state.update_data(cover_image=message.photo[-1].file_id)
     await message.reply("Working on your request! Wait a minute...")
 
