@@ -56,6 +56,9 @@ async def process_result(message: Message, data: Dict[str, Any]):
 
 @router.message(ChangeCoverForm.song)
 async def process_get_song(message: Message, state: FSMContext):
+    if message.audio is None:
+        await state.clear()
+        return
     await state.update_data(song=message.audio.file_id)
     await state.update_data(song_name=message.audio.file_name)
     await state.set_state(ChangeCoverForm.cover_image)
