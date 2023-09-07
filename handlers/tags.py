@@ -22,7 +22,9 @@ class ChangeCoverForm(StatesGroup):
 @router.message(Command("change_cover"))
 async def start_change_cover(message: Message, state: FSMContext):
     await state.set_state(ChangeCoverForm.song)
-    await message.reply(text="Hi! You want to check cover image of some song? Send it to me, and then send image, and I will make it!")
+    await message.reply(text="Hi! You want to check cover image of some song? "
+                             "Send it to me, and then send image, and I will "
+                             "make it!")
 
 
 async def process_result(message: Message, data: Dict[str, Any]):
