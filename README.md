@@ -18,7 +18,7 @@
 
 ### Prequisites
 1. Python 3.11 or higher
-2. Systemd (not done yet)
+2. Systemd (if you want to run bot as service)
 
 ### Basic startup
 Clone the repository and install all dependencies by:
